@@ -7,9 +7,13 @@ I suck at data structure &amp; algorithms. So, lets practice!
 * Array
   * Problems from leetcode
 * Linked List
-  * Union, intersection & sorting
+  * Union
+  * Intersection 
+  * Sorting
 * Trees
-  * Preorder, postorder & inorder
+  * Preorder 
+  * Postorder 
+  * Inorder
 
 ## Concepts to focus on:
 
