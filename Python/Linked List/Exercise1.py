@@ -93,7 +93,6 @@ class LinkedList:
     itr = self.head
     while itr:
       if itr.data == data_after:
-        print("match found")
         new_node = Node(data_to_insert, itr.next)
         itr.next = new_node
         return
@@ -101,33 +100,30 @@ class LinkedList:
     raise Exception("Data not present in list!")
   
   def remove_by_value(self, data):
+    # new Code
     itr = self.head
-    count = 0
+    index = 0
     while itr:
       if itr.data == data:
+        # at the beginning:
+        if index == 0:
+          self.head = self.head.next
+          return
         break
       itr = itr.next
-      count += 1
-
-    if count == 0:
-      self.head = self.head.next
-      return 
-
-    if count == self.get_length():
-      print("Value not in list!")
+      index += 1
+    
+    if index == self.get_length():
+      print("Element not in list!")
       return
-
-    if count == self.get_length()-1:
-      itr = self.head
-      for i in range(count):
-        if i == count - 1:
+    
+    itr = self.head
+    for i in range(index):
+      if i == index - 1:
+        # at the end:
+        if i == self.get_length() - 1:
           itr.next = None
           return
-        itr = itr.next
-
-    itr = self.head
-    for i in range(count):
-      if i == count - 1:
         itr.next = itr.next.next
         return
       itr = itr.next
