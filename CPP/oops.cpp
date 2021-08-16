@@ -7,19 +7,14 @@ class Contract{
   virtual string getPromotion() = 0;
 };
 
-class Person: Contract{
+class Employee: Contract{
+protected:
   string Name;
   string Characteristics;
   int Age;
   float Salary;
 
 public:
-  Person(string name, string character, int age, float salary){
-    Name = name;
-    Characteristics = character;
-    Age = age;
-    Salary = salary;
-  }
 
   string getPromotion(){
     int character = Characteristics.compare("Smart");
@@ -30,15 +25,61 @@ public:
   }
 
   void getter(){
-    cout << Name << '\n';
-    cout << Characteristics << '\n';
-    cout << Age << '\n';
-    cout << Salary << '\n';
+    cout << Name << " is " << Characteristics << ". " << Age << " years old & is earning " << Salary << " ";
+  }
+
+  virtual void work(){
+    cout << Name << " is doing the assinged work!" << endl;
+  }
+};
+
+class Developer : public Employee{
+
+  string Language;
+
+public:
+  Developer(string name, string character, int age, float salary, string language){
+    Name = name;
+    Characteristics = character;
+    Age = age;
+    Salary = salary;
+    Language = language;
+  }
+
+  void work(){
+    cout << Name << " is implementing the project using " << Language <<endl;
+  }
+};
+
+class Analyst: public Employee{
+
+  int Level;
+
+public:
+  Analyst(string name, string character, int age, float salary, int level){
+    Name = name;
+    Characteristics = character;
+    Age = age;
+    Salary = salary;
+    Level = level;
+  }
+
+  void who(){
+    getter();
+    cout << "he is on level: " << Level << endl;
   }
 };
 
 int main(){
-  Person p1 = Person("Ujjwal", "Timid", 21, 4500.99);
-  p1.getter();
-  cout << '\n' << p1.getPromotion();
+  Developer d = Developer("Ujjwal", "Timid", 21, 4500.99, "Python");
+  Analyst a = Analyst("Sharma", "Smart", 28, 5000.25, 4);
+
+  Employee* e1 = &d;
+  Employee* e2 = &a;
+
+  e1->work();
+  e2->work();
+  cout << e1->getPromotion() << endl;
+  cout << e2->getPromotion() << endl;
+  a.who();
 }
