@@ -12,18 +12,65 @@ One more test case is that if I have an array like this: [-1, 5, 9, -2, -8], I c
 Future Prospects: If the problem is solved, I can make the size of the array variable and then solve the problem.
 */
 
-// Learning OOPs & pointers in cpp for now:
 
 #include <iostream>
 using namespace std;
 
 class CardFlip{
-  public:
-    int arr[5], size;
+public: 
+  int Size;
+  int Arr[];
+
+  CardFlip(int size, int arr[]){
+    Size = size;
+    *Arr = *arr;
+  }
+
+  int highestSum(){
+    int temp = 0;
+    bool check = false;
+    int sum = 0;
+    if (Arr[Size-1] < 0 && Arr[0] < 0)
+      Arr[Size-1] = -Arr[Size-1];
+
+    for (int i=0; i<Size; i++){
+      if(Arr[i] < 0){
+        for(int j=i+1; j<Size; j++){
+          if (Arr[j] > 0){
+            if (temp != 0){
+              if (Arr[i] < Arr[temp])
+                break;
+            }
+            temp = i;
+            check = true;
+            break;
+          }
+          Arr[j] = -Arr[j];
+        }
+        Arr[i] = -Arr[i];
+      }
+    }
+
+    if (check)
+      Arr[temp] = -Arr[temp];
+
+    cout << "The deck after switching is: " << endl;    
+    for (int i = 0; i<Size; i++){
+      cout << Arr[i] << " ";
+      sum += Arr[i];
+    }
+    cout << endl << "The highest sum is: " ; 
+    return sum;
+  }
 };
-CardFlip deck;
 
 int main(){
-
+  int deck[] = {1, -5, 9, -2, -8};
+  CardFlip deck1 = CardFlip(5, deck);
+  cout << "The deck of cards is: " << endl;
+  for (int i=0; i<5; i++){
+    cout << deck[i] << " ";
+  }
+  cout << endl << deck1.highestSum();
   return 0;
 }
