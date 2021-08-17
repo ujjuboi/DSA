@@ -1,4 +1,4 @@
-# exercise link: https://github.com/codebasics/data-structures-algorithms-python/blob/master/data_structures/3_LinkedList/3_linked_list_exercise.md
+# Exercise link: https://github.com/codebasics/data-structures-algorithms-python/blob/master/data_structures/3_LinkedList/3_linked_list_exercise.md
 
 # Code copied directly from the problem:
 class Node:
