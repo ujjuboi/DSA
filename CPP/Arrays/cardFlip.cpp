@@ -65,10 +65,11 @@ public:
 };
 
 int main(){
-  int deck[] = {1, -5, 9, -2, -8};
-  CardFlip deck1 = CardFlip(5, deck);
+  int deck[] = {1, -5, 9, -2, -8, -4};
+  int size = 6;
+  CardFlip deck1 = CardFlip(size, deck);
   cout << "The deck of cards is: " << endl;
-  for (int i=0; i<5; i++){
+  for (int i=0; i<size; i++){
     cout << deck[i] << " ";
   }
   cout << endl << deck1.highestSum();
