@@ -23,10 +23,10 @@ class Taxi:
     passengerCount = 0
     for row in range(n-1, -1):
       for cell in range(m-1, -1):
-        if cell == 1:
+        if matrix[row][cell] == 1:
           passengerCount += 1
-          cell = 0
-        if cell == -1:
+          matrix[row][cell] = 0
+        if matrix[row][cell] == -1:
           continue
     return passengerCount
   
